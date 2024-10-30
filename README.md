@@ -1,13 +1,13 @@
 # Azure OpenAI Assistants API: Creating your first 10K Vector Store
 
-**Vector Store** is a new object in Azure OpenAI (AOAI) Assistants API, that makes uploaded files searcheable, by automatically parsing, chunking and embedding their content.
+**Vector Store** is a new object in Azure OpenAI (AOAI) Assistants API, that makes uploaded files searcheable by automatically parsing, chunking and embedding their content.
 
 At the time of writing (October 2024), Vector Store was supporting the ingestion of up to **10,000** files.
 
 > [!WARNING]
-> Uploading thousands of files may fail because of timeout or other disruptions to API operation. That's why the upload process is enforcing two **maximum file** limits:
-> - up to _100_ files max, when creating new Vector Store;
-> - up to _500_ files max, when adding files to the existing Vector Store.
+> Uploading thousands of files may fail due to timeouts or other API operation disruptions. Therefore, the upload process enforces two **maximum file** limits:
+> - up to _100_ files max, when creating a new Vector Store;
+> - up to _500_ files max, when adding files to an existing Vector Store.
 
 ## Table of contents:
 - [Pre-requisites](https://github.com/LazaUK/AOAI-Assistants-VectorStore#pre-requisites)
@@ -19,13 +19,13 @@ At the time of writing (October 2024), Vector Store was supporting the ingestion
 ``` PowerShell
 pip install --upgrade openai
 ```
-2. Set the following 3 environment variables before running the notebook:
+2. Set the following 3 environment variables before running the notebooks:
 
 | Environment Variable | Description |
 | --- | --- |
-| _AZURE_OPENAI_API_BASE_ | URL of AOAI endpoint |
-| _AZURE_OPENAI_API_VERSION_ | API version of AOAI endpoint |
-| _AZURE_OPENAI_API_KEY_ | API key of AOAI endpoint (_required for Scenario 1 only_) |
+| _AZURE_OPENAI_API_BASE_ | Base URL of the AOAI endpoint |
+| _AZURE_OPENAI_API_VERSION_ | API version of the AOAI endpoint |
+| _AZURE_OPENAI_API_KEY_ | API key of the AOAI endpoint (_required for Scenario 1 only_) |
 
 ## Scenario 1: Authenticating with API Key
 1. Retrieve values of environment variables:
@@ -48,14 +48,14 @@ vector_store = client.beta.vector_stores.create(
     name = "<VECTOR_STORE_NAME>"
 )
 ```
-4. Populate the Vector Store with your files in bacthes:
+4. Populate the Vector Store with your files in batches:
 ``` Python
 file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
     vector_store_id = vector_store.id,
     files = file_streams
 )
 ```
-5. If successful, you should see something like this:
+5. If successful, you should see a message like this:
 ``` JSON
 Uploading files to the vector store from folder1...
 Files upload status: completed
@@ -94,7 +94,7 @@ token_provider = get_bearer_token_provider(
 client = AzureOpenAI(
     azure_endpoint = AOAI_API_BASE,
     api_version = AOAI_API_VERSION,
-    api_key = AOAI_API_KEY
+    azure_ad_token_provider = token_provider
 )
 ```
 4. Instantiate new Vector Store:
@@ -103,14 +103,14 @@ vector_store = client.beta.vector_stores.create(
     name = "<VECTOR_STORE_NAME>"
 )
 ```
-5. Populate the Vector Store with your files in bacthes:
+5. Populate the Vector Store with your files in batches:
 ``` Python
 file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
     vector_store_id = vector_store.id,
     files = file_streams
 )
 ```
-6. If successful, you should see something like this:
+6. If successful, you should see a message like this:
 ``` JSON
 Uploading files to the vector store from folder1...
 Files upload status: completed
