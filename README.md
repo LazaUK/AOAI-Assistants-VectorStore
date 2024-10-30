@@ -1,6 +1,8 @@
 # Azure OpenAI Assistants API: Creating your first 10K Vector Store
 
-```Vector Store``` is an object in Assistants API, that makes uploaded files searcheable, by automatically parsing, chunking and embedding their content. At the time of writing (October 2024), Vector Store was supporting the ingestion of up to 10,000 files.
+**Vector Store** is a new object in Assistants API, that makes uploaded files searcheable, by automatically parsing, chunking and embedding their content.
+
+At the time of writing (October 2024), Vector Store was supporting the ingestion of up to **10,000** files.
 
 > [!WARNING]
 > Uploading thousands of files may fail because of timeout or other disruptions to API operation. That's why the upload process is enforcing two **maximum file** limits:
