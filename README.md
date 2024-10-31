@@ -2,7 +2,7 @@
 
 **Vector Store** is a new object in Azure OpenAI (AOAI) Assistants API, that makes uploaded files searcheable by automatically parsing, chunking and embedding their content.
 
-At the time of writing (October 2024), Vector Store was supporting the ingestion of up to **10,000** files.
+At the time of writing (```October 2024```), Vector Store was supporting the ingestion of up to **10,000** files.
 
 > [!WARNING]
 > Uploading thousands of files may fail due to timeouts or other API operation disruptions. Therefore, the upload process enforces two **maximum file** limits:
