@@ -7,7 +7,7 @@ At the time of writing (```October 2024```), Vector Store was supporting the ing
 > [!WARNING]
 > Uploading thousands of files may fail due to timeouts or other API operation disruptions. Therefore, the upload process enforces two **maximum file** limits:
 > - up to _100_ files max, when creating a new Vector Store;
-> - up to _500_ files max, when adding files to an existing Vector Store.
+> - up to _500_ files max **per batch**, when adding files to an existing Vector Store.
 
 ## Table of contents:
 - [Pre-requisites](https://github.com/LazaUK/AOAI-Assistants-VectorStore#pre-requisites)
